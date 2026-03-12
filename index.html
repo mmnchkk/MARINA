@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>МАРИНА РАЗЪЕБАЛА ВСЁ НАХУЙ</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root {
+    --chaos: #ff00ff;
+    --chaos2: #00ffff;
+    --chaos3: #ff0066;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  text-transform: uppercase;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  image-rendering: pixelated;
+}
+h1 {
+  text-align: center;
+  padding: 80px 20px 40px;
+  font-size: clamp(38px, 9vw, 120px);
+  text-shadow:0 0 20px var(--chaos),0 0 40px var(--chaos2),0 0 80px var(--chaos3);
+  animation: glitch 4s infinite;
+  letter-spacing: 8px;
+}
+@keyframes glitch {
+    0%,100% { transform: translate(0); }
+    2% { transform: translate(-2px, 2px); }
+    4% { transform: translate(2px, -2px); }
+    6% { transform: translate(-1px, 1px) skew(5deg); }
+    8%, 10% { transform: translate(0); }
+}
+section { max-width: 1200px; margin: 0 auto; padding: 20px; position: relative; z-index: 10; }
+.hero { display: flex; gap: 60px; align-items: center; margin: 0 0 140px; justify-content: center; }
+.hero img { width: clamp(280px, 45vw, 520px); aspect-ratio: 1/1; object-fit: cover; border: 8px solid #fff; box-shadow: 0 0 0 12px #000, 0 0 40px var(--chaos); animation: spin-slow 120s linear infinite; }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.hero-text { max-width: 600px; font-size: clamp(13px, 2.1vw, 18px); line-height: 2.1; background: rgba(0,0,0,0.7); padding: 30px; border: 5px dashed var(--chaos); }
+.block { display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch; border: 6px double #fff; margin-bottom: 100px; padding: 40px; background: rgba(20,0,30,0.85); position: relative; overflow: hidden; transition: all 0.4s; cursor: pointer; }
+.block img { width: clamp(220px, 38vw, 380px); aspect-ratio: 1/1; object-fit: cover; border: 5px solid #000; box-shadow: 0 0 30px #000; }
+.text { flex: 1; display: flex; flex-direction: column; gap: 10px; position: relative; min-height: 200px; }
+.text span { display:block; text-shadow:2px 2px 0 #000; position:relative; word-break:break-word; max-width:100%; line-height:1.6; margin-bottom:6px; }
+.glitch-text { animation: textGlitch 2.5s infinite; }
+@keyframes textGlitch {0%,100% { text-shadow: 2px 0 red, -2px 0 cyan; }20% { text-shadow: -4px 0 magenta, 4px 0 lime; }40% { text-shadow: 6px 0 yellow, -6px 0 blue; }}
+.floating-chaos { position: fixed; width: 80px; height: 80px; background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00); opacity: 0.15; pointer-events: none; border-radius: 30% 70% 20% 80% / 60% 30% 70% 40%; animation: floatChaos 18s linear infinite; z-index: 5; }
+@keyframes floatChaos {0% { transform: translate(-20vw, 120vh) rotate(0deg) scale(0.4); } 100% { transform: translate(120vw, -80vh) rotate(720deg) scale(1.8); }}
+.pixel-rain { position: fixed; width: 8px; height: 8px; pointer-events: none; animation: fall 1.2s linear forwards; box-shadow: 0 0 12px #ff00aa; }
+@keyframes fall { to { transform: translateY(120vh); } }
+.crazy-cursor { position: fixed; width: 36px; height: 36px; border: 3px solid #00ffea; border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 9999; mix-blend-mode: difference; animation: pulse 1.4s infinite alternate; }
+@keyframes pulse { to { transform: translate(-50%,-50%) scale(2.8); opacity: 0.1; } }
+.explosion { position: fixed; width: 160px; height: 160px; background: radial-gradient(circle, #ffff00, #ff6600, transparent); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); opacity: 0; animation: boom 0.9s forwards; }
+@keyframes boom {0% { transform: translate(-50%,-50%) scale(0.1); opacity: 1; }70% { transform: translate(-50%,-50%) scale(2.2); opacity: 0.8; }100% { transform: translate(-50%,-50%) scale(4); opacity: 0; }}
+@keyframes driftLR {0%{transform:translateX(0)}50%{transform:translateX(40px)}100%{transform:translateX(0)}}
+@keyframes softShake {0%,100%{transform:translate(0,0)}25%{transform:translate(2px,-1px)}50%{transform:translate(-2px,1px)}75%{transform:translate(1px,2px)}}
+@keyframes lazyJump {0%,92%,100%{transform:translateY(0)}96%{transform:translateY(-30px)}}
+@keyframes slowSpin {from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes wobble {0%,100%{transform:rotate(0)}25%{transform:rotate(3deg)}50%{transform:rotate(-3deg)}75%{transform:rotate(2deg)}}
+@keyframes floatY {0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes tilt {0%,100%{transform:skew(0)}50%{transform:skew(6deg,2deg)}}
+@keyframes pulseBlock {0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+
+@keyframes bgShift {
+  0%{background:#ff0066}
+  25%{background:#00ffff}
+  50%{background:#ffff00}
+  75%{background:#00ff66}
+  100%{background:#ff0066}
+}
+
+@keyframes midShake {
+  0%,100%{transform:translate(0,0)}
+  20%{transform:translate(-4px,2px)}
+  40%{transform:translate(4px,-2px)}
+  60%{transform:translate(-3px,3px)}
+  80%{transform:translate(3px,-1px)}
+}
+
+@keyframes flyAcross {
+  0%{transform:translate(0,0)}
+  20%{transform:translate(60vw,-20vh) rotate(90deg)}
+  40%{transform:translate(-40vw,30vh) rotate(180deg)}
+  60%{transform:translate(30vw,40vh) rotate(270deg)}
+  80%{transform:translate(-20vw,-30vh) rotate(360deg)}
+  100%{transform:translate(0,0)}
+}
+
+@keyframes growPulse {
+  0%,90%,100%{transform:scale(1)}
+  95%{transform:scale(3)}
+}
+.weird-btn { position: absolute; font-family: 'VT323', monospace; cursor: pointer; z-index: 999; box-shadow: 0 0 20px #0f0; transition: all 0.2s; background: #000; color:#0f0; border:4px solid #0f0; padding:42px 72px; font-size:80px;}
+.big-chaos-btn{
+  position:absolute;
+  font-family:'VT323', monospace;
+  font-size:42px;
+  padding:20px 40px;
+  border:6px solid #fff;
+  background:#000;
+  color:#fff;
+  z-index:9998;
+  cursor:pointer;
+  box-shadow:0 0 30px #fff;
+}
+.big-chaos-btn:hover{transform:scale(1.2) rotate(4deg)}
+footer { border-top: 10px double #fff; margin-top: 2000px; display: flex; gap: 300px; justify-content: center; align-items: center;
+    padding: 80px 20px; text-align: center; font-size: 18px; background: rgba(0,0,0,0.8); position: relative; z-index: 10; }
+
+</style>
+</head>
+<body>
+<div class="crazy-cursor" id="cursor"></div>
+<h1 class="glitch-text">МАРИНА РАЗЪЕБАЛА РЕАЛЬНОСТЬ</h1>
+<section>
+  <div class="hero">
+    <img src="maman.png" alt="МАРИНА">
+    <div class="hero-text">
+      <p>this is МАРИНА</p>
+      <p>СНАЧАЛА ВСЁ БЫЛО СКУЧНО И ПО ТУПОМУ</p>
+      <p>ПОТОМ ОНА ЧИХНУЛА АХУЕТЬ КАК</p>
+      <p>И ФИЗИЧЕСКИЕ ЗАКОНЫ СОСНУЛИ ХУЙЦА</p>
+      <p class="glitch-text">ТЕПЕРЬ ВСЕ ВАХУЕ</p>
+    </div>
+  </div>
+  <div id="world"></div>
+</section>
+<footer>
+  <p>МАРИНА ВСЕГДА НА СВЯЗИ</p>
+  <p>ТЕЛЕФОН: +666-666-666, не возьмет трубку лох</p>
+</footer>
+<script>
+// ─────────────── CRAZY CURSOR ───────────────
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+document.addEventListener('click', e => {
+  const boom = document.createElement('div');
+  boom.className = 'explosion';
+  boom.style.left = e.clientX + 'px';
+  boom.style.top = e.clientY + 'px';
+  document.body.appendChild(boom);
+  setTimeout(() => boom.remove(), 1000);
+  const effects = ['scale', 'rotate', 'hue', 'invert', 'jump'];
+  const effect = effects[Math.floor(Math.random()*effects.length)];
+  if(effect==='hue') document.body.style.filter = `hue-rotate(${Math.random()*360}deg)`;
+  if(effect==='invert') document.body.style.filter = `invert(${Math.random()>0.5?1:0})`;
+  setTimeout(()=>document.body.style.filter='none',1200);
+});
+
+// ─────────────── TEXT BLOCKS ───────────────
+const madness = [
+"ДЛЯ КОМФОРТА МАРИНЫ КЛИМАТ ПЕРЕЕБЫВАЕТСЯ В ВЕЧНОЕ ЛЕТО. ВСЕ ХОДЯТ БОСИКОМ И ПЕРЕСТАЮТ ПРИТВОРЯТЬСЯ НОРМАЛЬНЫМИ. ЛЮДИ НАЧИНАЮТ ОБЩАТЬСЯ С НАСЕКОМЫМИ КАК С СОСЕДЯМИ. ВСЕ ЭТО СМОТРИТ МАРИНА И ДОВОЛЬНО КИВАЕТ.",
+
+"ВСЕ ЗЕРКАЛА ПОКАЗЫВАЮТ МАРИНУ ВМЕСТО ТЕБЯ. СНАЧАЛА ЛЮДИ ДУМАЮТ ЧТО СОШЛИ С УМА. ПОТОМ ПРИВЫКАЮТ.",
+
+"*(&^%*()&*^(&)*)(*(*(*(&% МАРИНА ЛЕТАЕТ ПО НЕБУ КАК БОСС ФИНАЛЬНОГО УРОВНЯ. ОНА СПОКОЙНО ПЕРЕЛЕТАЕТ ГОРОДА И ГОРЫ. ИНОГДА ОСТАНАВЛИВАЕТСЯ В ВОЗДУХЕ ЧТОБЫ ПОСМЕЯТЬСЯ. А ВЫ НЕ ЛЕТАЕТЕ. ХАХАХАХАХА ЛОХИ.",
+
+"НЕТ МЕСЯЧНЫМ",
+
+"МАРИНА СМЕЕТСЯ ГДЕ‑ТО ВДАЛИ. ЛЮДИ СЛЫШАТ ЭТО И НЕМНОГО НЕРВНИЧАЮТ. НО НИКТО НЕ ПОНИМАЕТ ОТКУДА ИДЕТ СМЕХ."
+];
+const world = document.getElementById("world");
+const blockAnimations = ['explode','scatter','spin','jump','fly','shrink-grow','wave','shake-fall','flip','crazy-spin'];
+// массив с конкретными фотками для блоков
+const myPics = [
+  'images/photo0.png',
+  'images/photo1.png',
+  'images/photo2.png',
+  'images/photo3.png',
+  'images/photo4.png'
+];
+
+const positions = [
+  {top: 650, left: -700},  // первый блок, сюда потом подставишь свои координаты
+  {top: 850, left: 700}, // второй блок
+  {top: 1400, left: -300}, // третий блок
+  {top: 2000, left: 300}, // четвертый блок
+  {top: 2100, left: -800}  // пятый блок
+];
+
+madness.forEach((text,i)=>{
+  const block = document.createElement('div');
+  block.className = 'block';
+  const blockWidths = ['1200px','1000px','1800px','750px','1200px'];
+  block.style.width = blockWidths[i];
+
+  const sentences = text.split('. ');
+  let formatted='';
+  sentences.forEach(s=>{
+    const size = 18 + Math.random()*8;
+    formatted += `<span style="font-size:${size}px">${s.trim()}</span>`;
+  });
+
+  block.innerHTML=`<img src='${myPics[i]}'> <div class='text'>${formatted}</div>`;
+
+  // задаём координаты вручную
+  block.style.position = 'absolute';
+  block.style.top = positions[i].top + 'px';
+  block.style.left = positions[i].left + 'px';
+
+  world.appendChild(block);
+
+  // здесь можешь оставить все свои анимации блока, как были
+  block.dataset.anim=blockAnimations[Math.floor(Math.random()*blockAnimations.length)];
+  if(i===0){
+    setInterval(()=>{
+      block.style.background=`hsl(${Math.random()*360}, 80%, 20%)`;
+    }, 500);
+  }
+  if(i===1){
+    setInterval(()=>{
+      block.style.transform=`translate(${Math.random()*40-20}px, ${Math.random()*100-50}px) rotate(${Math.random()*20-10}deg)`;
+    }, 100);
+    setInterval(()=>{
+      block.style.transform=`translate(${Math.random()*40-20}px, ${Math.random()*100-50}px) rotate(${Math.random()*20-10}deg)`;
+    }, 300);
+    let direction = -100;
+    setInterval(()=>{
+      block.style.transition='transform 0.3s linear';
+      block.style.transform=`translateX(${direction}px)`;
+      direction = direction === -100 ? 50 : -100;
+    }, 300);
+  }
+  if(i===2){
+    setInterval(()=>{
+      block.style.transition='transform 0.2s linear';
+      block.style.transform=`translate(${Math.random()*2000-1000}px,${Math.random()*1200-600}px) rotate(${Math.random()*720}deg)`;
+      setTimeout(()=>{block.style.transform='';},2000);
+    },7000);
+  }
+  if(i===3){
+    let direction = 150;
+    setInterval(()=>{
+      block.style.transition='transform 0.3s linear';
+      block.style.transform=`translateX(${direction}px)`;
+      direction = direction === 150 ? 450 : 150;
+    }, 600);
+  }
+  if(i===4){
+    setInterval(()=>{
+      block.style.transition='transform 0.1s linear';
+      block.style.transform='scale(3)';
+      setTimeout(()=>{block.style.transform='scale(1)';},300);
+    },3000);
+  }
+});
+
+// ─────────────── BLOCK CLICK ANIMATIONS ───────────────
+world.addEventListener('click', e => {
+  const block = e.target.closest('.block');
+  if(!block) return;
+  const anim = block.dataset.anim;
+  block.style.transition='all 0.03s linear';
+  switch(anim){
+    case 'explode': block.style.transform='scale(2) rotate(720deg)'; break;
+    case 'scatter': block.style.transform='translate('+Math.random()*500+'px,'+Math.random()*500+'px) rotate('+Math.random()*360+'deg)'; break;
+    case 'spin': block.style.animation='spin 0.5s linear infinite'; break;
+    case 'jump': block.style.transform='translateY(-200px)'; break;
+    case 'fly': block.style.transform='translate('+Math.random()*1000+'px,'+Math.random()*500+'px)'; break;
+    case 'shrink-grow': block.style.transform='scale(0.1)'; setTimeout(()=>block.style.transform='scale(1.8)',200); break;
+    case 'wave': block.style.transform='skew(20deg,10deg)'; break;
+    case 'shake-fall': block.style.transform='translate('+Math.random()*200+'px,'+Math.random()*200+'px) rotate('+Math.random()*60+'deg)'; break;
+    case 'flip': block.style.transform='rotateY(180deg)'; break;
+    case 'crazy-spin': block.style.transform='rotate('+Math.random()*1080+'deg) scale('+Math.random()*3+')'; break;
+  }
+  setTimeout(()=>{block.style.transform=''; block.style.animation='';},500);
+});
+
+// ─────────────── FLOATING CHAOS ───────────────
+setInterval(()=>{const el=document.createElement('div');el.className='floating-chaos';el.style.left=Math.random()*100+'vw';el.style.animationDuration=(12+Math.random()*18)+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),30000);},1400);
+
+// ─────────────── PIXEL RAIN ───────────────
+function pixelMadness(){for(let i=0;i<120;i++){const p=document.createElement('div');p.className='pixel-rain';p.style.left=Math.random()*100+'vw';p.style.animationDuration=(0.8+Math.random()*2.2)+'s';p.style.background=`hsl(${Math.random()*360}, 100%, 60%)`;document.body.appendChild(p);setTimeout(()=>p.remove(),5000);}};
+setInterval(pixelMadness,1800);
+
+// ─────────────── CHAOS BUTTONS SCATTERED THROUGH PAGE ───────────────
+const symbols = ['%',';',':','"','(',')','/','\\','*','&','^','@','#','!','~'];
+function randomString(length){let s=''; for(let i=0;i<length;i++) s+=symbols[Math.floor(Math.random()*symbols.length)]; return s;}
+
+function createChaosButton(effectIndex,yPos){
+  const btn=document.createElement('button');
+  btn.className='weird-btn';
+  const size=(Math.floor(Math.random()*16)+14)*3;
+  btn.style.fontSize=size+'px';
+  btn.innerText=randomString(Math.floor(Math.random()*6)+3);
+  if(effectIndex % 2 === 0){
+    btn.style.left = '8%';
+  } else {
+    btn.style.right = '8%';
+  }
+  btn.style.top=yPos+'px';
+
+  btn.onclick=()=>{
+    const overlay=document.createElement('div');
+    overlay.style.position='fixed';
+    overlay.style.top=0;
+    overlay.style.left=0;
+    overlay.style.width='100%';
+    overlay.style.height='100%';
+    overlay.style.zIndex=99999;
+    overlay.style.display='flex';
+    overlay.style.justifyContent='center';
+    overlay.style.alignItems='center';
+    overlay.style.textAlign='center';
+    overlay.style.pointerEvents='none';
+    overlay.style.fontSize='48px';
+    document.body.appendChild(overlay);
+
+    if(effectIndex===0){
+      document.querySelectorAll('body *').forEach(el=>{
+        if(el!==overlay&&el!==btn&&el!==cursor){
+          el.style.transition='transform 0.3s linear';
+          const interval=setInterval(()=>{
+            el.style.transform=`translate(${Math.random()*2000-1000}px,${Math.random()*1200-600}px) rotate(${Math.random()*720}deg)`;
+          },100);
+          setTimeout(()=>{clearInterval(interval);el.style.transform='';},800);
+        }
+      });
+    } else if(effectIndex===1){
+      overlay.style.background='#ffffff';
+      overlay.style.color='#000';
+      overlay.style.fontSize='60px';
+      overlay.innerHTML='и что ты натыкал еблан?';
+      document.querySelectorAll('body > *:not(script)').forEach(el=>{ if(el!==overlay) el.style.visibility='hidden'; });
+      setTimeout(()=>{
+        document.querySelectorAll('body > *').forEach(el=>el.style.visibility='');
+        overlay.remove();
+      },3000);
+    } else if(effectIndex===2){
+      overlay.style.fontSize='80px';
+      overlay.style.color='#fff';
+      overlay.innerHTML='ТВОЮ МАТЬ...';
+      document.querySelectorAll('body *').forEach(el=>{
+        if(el!==overlay&&el!==btn&&el!==cursor){
+          el.style.transition='transform 0.6s ease';
+          el.style.transform=`scale(${4+Math.random()*6}) rotate(${Math.random()*360}deg)`;
+        }
+      });
+      setTimeout(()=>{
+        document.querySelectorAll('body *').forEach(el=>{ if(el!==overlay&&el!==btn&&el!==cursor) el.style.transform=''; });
+        overlay.remove();
+      },3000);
+    } else{
+      overlay.style.background='#000';
+      overlay.style.color='#fff';
+      overlay.innerHTML='загрузка...';
+
+      document.querySelectorAll('body > *:not(script)').forEach(el=>{ if(el!==overlay) el.style.visibility='hidden'; });
+
+      setTimeout(()=>{
+        overlay.style.background='#ffffff';
+        overlay.style.color='#000';
+        overlay.style.flexDirection='column';
+        overlay.innerHTML='<h2 style="font-size:40px;margin-bottom:50px">НАСТОЯЩИЙ САЙТ</h2><img src="maman.png" style="max-width:600px;border-radius:20px;margin-bottom:20px"><p style="font-size:40px margin-bottom:50px">мама с днем рождения блять</p><p style="margin-top:50px;font-size:40px">ну че блять нравится?</p>';
+      },1000);
+
+      setTimeout(()=>{
+        document.querySelectorAll('body > *').forEach(el=>el.style.visibility='');
+        overlay.remove();
+      },7000);
+    }
+  };
+
+  document.body.appendChild(btn);
+}
+
+window.addEventListener('load',()=>{
+  const effects=[0,1,2,3];
+  const basePositions=[300,900,1600,2300];
+  effects.forEach((effect,i)=>{
+    createChaosButton(effect, basePositions[i]);
+  });
+});
+
+// ─────────────── RANDOM BIG COLOR BUTTON ───────────────
+function spawnBigColorButton(){
+  const btn=document.createElement('button');
+  btn.className='big-chaos-btn';
+  btn.innerText='???';
+  btn.style.left=Math.random()*80+'%';
+  btn.style.top=(window.scrollY+Math.random()*window.innerHeight)+'px';
+
+  btn.onclick=()=>{
+    const body=document.body;
+    const interval=setInterval(()=>{
+      body.style.background=`hsl(${Math.random()*360},80%,10%)`;
+      body.style.color=`hsl(${Math.random()*360},100%,80%)`;
+      body.style.filter=`hue-rotate(${Math.random()*360}deg)`;
+    },120);
+
+    setTimeout(()=>{
+      clearInterval(interval);
+      body.style.background='#000';
+      body.style.color='#fff';
+      body.style.filter='none';
+      btn.remove();
+    },2000);
+  };
+
+  document.body.appendChild(btn);
+  setTimeout(()=>btn.remove(),6000);
+}
+
+setInterval(()=>{
+  if(Math.random()>0.6) spawnBigColorButton();
+},5000);
+
+</script>
+</body>
+</html>
